@@ -1,23 +1,20 @@
-course_list_info = []
-student_list_info = []
-mark_subject_single = []
-#The next below line ask user to input a number that represents the quantity of student list
-student_number_count = int(input("Enter a positive number: "))
-answer = True
-while student_number_count < 0:
-    student_number_count = int(input("Please reenter the right positive number: "))
-if student_number_count > 0:
-    print(f"We have to fill information for {student_number_count} students")
+courses_information = {}
+students_information = {}
+mark_subject_single = {}
+
 def student_info():
     #This function ask user to input information for a specific number of students
+    student_number_count = int(input("Enter a positive number: "))
+    answer = True
+    while student_number_count < 0:
+        student_number_count = int(input("Please reenter the right positive number: "))
+    if student_number_count > 0:
+        print(f"We have to fill information for {student_number_count} students")
     for i in range(student_number_count):
         student_id = str(input("Enter student's id: "))
         student_name = str(input("Enter student's name: "))
         student_DateOfBirth = str(input(f"Enter student's date of birth: "))
-        student_list_info.append(student_id)
-        student_list_info.append(student_name)
-        student_list_info.append(student_DateOfBirth)
-    return student_list_info
+        students_information[student_id] = {'Student_Name"=': student_name, 'Student_DateOfBirth': student_DateOfBirth}
 def course_info():
     #This function ask user to input information for course information
     course_number = int(input("Enter a number of course which are positive: "))
@@ -29,9 +26,6 @@ def course_info():
     for j in range(course_number):
         course_id = str(input("Enter course's id: "))
         course_name = str(input("Enter course's name: "))
-        course_list_info.append(course_id)
-        course_list_info.append(course_name)
-    return course_list_info
 def mark_subject():
     #Here is the function to input mark for student 
     course_check = str(input("Please enter course's id/course's name to fill mark: "))
