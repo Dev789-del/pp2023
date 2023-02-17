@@ -18,7 +18,6 @@ def student_info():
         student_list_info.append(student_name)
         student_list_info.append(student_DateOfBirth)
     return student_list_info
-print(f"Here is the information of student list after input from user: {student_info()}")
 def course_info():
     #This function ask user to input information for course information
     course_number = int(input("Enter a number of course which are positive: "))
@@ -33,7 +32,6 @@ def course_info():
         course_list_info.append(course_id)
         course_list_info.append(course_name)
     return course_list_info
-print(f"Here is the course list's information after receiving content from user: {course_info()}")
 def mark_subject():
     #Here is the function to input mark for student 
     course_check = str(input("Please enter course's id/course's name to fill mark: "))
@@ -53,4 +51,27 @@ def mark_subject():
     if mark_student > 0:
         mark_subject_single.append(mark_student)
     return mark_subject_single    
-print(f"Here is the final result of course: {mark_subject()}")
+
+#While loop to show list of choices
+Condition = True
+while Condition:
+    print("----------Student Management System welcome users----------")
+    print("Here is your list of choices:")
+    print("1.Show list of courses")
+    print("2.Show list of students")
+    print("3.Input student's result of courses")
+    print("4.Show final result of courses")
+    print("5.Exit system")
+    option = int(input("Please give me your number: "))
+    if option == 1:
+        courses_list()
+    elif option == 2:
+        students_list()
+    elif option == 3:
+        mark_subject()
+    elif option == 4:
+        mark_receive()
+    elif option == 5:
+        break
+    else:
+        print("Invalid choice.You need to enter again.")
