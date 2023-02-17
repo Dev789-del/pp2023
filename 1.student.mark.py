@@ -12,10 +12,10 @@ def student_info():
     if student_number_count > 0:
         print(f"We have to fill information for {student_number_count} students")
     for i in range(student_number_count):
-        student_id = str(input("Enter student's id: "))
+        student_ID = str(input("Enter student's id: "))
         student_name = str(input("Enter student's name: "))
         student_DateOfBirth = str(input(f"Enter student's date of birth: "))
-        students_information[student_id] = {'Student_Name"=': student_name, 'Student_DateOfBirth': student_DateOfBirth}
+        students_information[student_ID] = {'Student_Name"=': student_name, 'Student_DateOfBirth': student_DateOfBirth}
 
 def course_info():
     #This function ask user to input information for course information
@@ -26,9 +26,9 @@ def course_info():
         print("Congratulations!You enter the valid number!")
         print(f"We need to fill information for {course_number} courses")
     for j in range(course_number):
-        course_id = str(input("Enter course's id: "))
+        course_ID = str(input("Enter course's id: "))
         course_name = str(input("Enter course's name: "))
-        courses_information[course_id] = {'Course_Name': course_name}
+        courses_information[course_ID] = {'Course_Name': course_name}
 
 def mark_subject():
     #Here is the function to input mark for student 
@@ -37,14 +37,14 @@ def mark_subject():
         course_check = str(input("Please reenter the valid course's id/course's name in course list info: "))
     if course_check in courses_information:
         print("You enter the right course's id.Please continue.")
-    for student_id in students_information:
+    for student_ID in students_information:
         mark_student = float(input(f"Enter marks for student: {mark_student}"))
         while mark_student < 0 and mark_student > 20:
             mark_student = float(input(f"You need to enter the mark again: {mark_student}"))
         else: 
-            if student_id not in mark_subject_list:
-                mark_subject_list[student_id] = {}
-            mark_subject_list[student_id][course_check] = mark_subject_list
+            if student_ID not in mark_subject_list:
+                mark_subject_list[student_ID] = {}
+            mark_subject_list[student_ID][course_check] = mark_subject_list
 
 #Define functions to show list of courses and list of students
 def courses_list():
@@ -61,11 +61,11 @@ def mark_receive():
         print("Course ID/Course name not exist.Please enter again")
     else: 
         print("You enter the valid input")
-    for student_id in students_information:
-        if student_id in mark_subject_list and course_identify in mark_subject_list[student_id]:
-            print(f"{students_information[student_id]['Student_Name']}: {mark_subject_list[student_id][course_identify]}")
+    for student_ID in students_information:
+        if student_ID in mark_subject_list and course_identify in mark_subject_list[student_ID]:
+            print(f"{students_information[student_ID]['Student_Name']}: {mark_subject_list[student_ID][course_identify]}")
         else:
-            print(f"{students_information[student_id]['Student_Name']}: N/A")
+            print(f"{students_information[student_ID]['Student_Name']}: N/A")
 
 #While loop to show list of choices
 student_info()
