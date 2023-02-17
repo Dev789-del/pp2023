@@ -1,13 +1,14 @@
+#define three empty database
 courses_information = {}
 students_information = {}
 mark_subject_list = {}
 
 def student_info():
     #This function ask user to input information for a specific number of students
-    student_number_count = int(input("Enter a positive number: "))
+    student_number_count = int(input("Enter a number that represent the amount of students(must be POSITIVE): "))
     answer = True
     while student_number_count < 0:
-        student_number_count = int(input("Please reenter the right positive number: "))
+        student_number_count = int(input("Please reenter the right positive number of students: "))
     if student_number_count > 0:
         print(f"We have to fill information for {student_number_count} students")
     for i in range(student_number_count):
@@ -15,9 +16,10 @@ def student_info():
         student_name = str(input("Enter student's name: "))
         student_DateOfBirth = str(input(f"Enter student's date of birth: "))
         students_information[student_id] = {'Student_Name"=': student_name, 'Student_DateOfBirth': student_DateOfBirth}
+
 def course_info():
     #This function ask user to input information for course information
-    course_number = int(input("Enter a number of course which are positive: "))
+    course_number = int(input("Enter a number of courses which are positive: "))
     while course_number < 0: 
         course_number = int(input("Please reenter the valid POSITIVE number!: "))
     if course_number > 0:
@@ -27,6 +29,7 @@ def course_info():
         course_id = str(input("Enter course's id: "))
         course_name = str(input("Enter course's name: "))
         courses_information[course_id] = {'Course_Name': course_name}
+
 def mark_subject():
     #Here is the function to input mark for student 
     course_check = str(input("Please enter course's id/course's name to fill mark: "))
@@ -42,6 +45,7 @@ def mark_subject():
             if student_id not in mark_subject_list:
                 mark_subject_list[student_id] = {}
             mark_subject_list[student_id][course_check] = mark_subject_list
+
 #Define functions to show list of courses and list of students
 def courses_list():
     print("Here is the list of courses information")
@@ -49,6 +53,7 @@ def courses_list():
 def students_list():
     print("Below is the list of students information")
     print(students_information)
+
 #Function below to present mark transcipt for student
 def mark_receive():
     course_identify = input("Enter course ID/course name to check: ")
@@ -61,6 +66,7 @@ def mark_receive():
             print(f"{students_information[student_id]['Student_Name']}: {mark_subject_list[student_id][course_identify]}")
         else:
             print(f"{students_information[student_id]['Student_Name']}: N/A")
+
 #While loop to show list of choices
 student_info()
 course_info()
@@ -73,7 +79,7 @@ while Condition:
     print("3.Input student's result of courses")
     print("4.Show final result of courses")
     print("5.Exit system")
-    option = int(input("Please give me your number: "))
+    option = int(input("Choose your option number: "))
     if option == 1:
         courses_list()
     elif option == 2:
