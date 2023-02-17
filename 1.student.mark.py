@@ -51,7 +51,13 @@ def mark_subject():
     if mark_student > 0:
         mark_subject_single.append(mark_student)
     return mark_subject_single    
-
+#Define functions to show list of courses and list of students
+def courses_list():
+    print("Here is the list of courses information")
+    print(courses_information)
+def students_list():
+    print("Below is the list of students information")
+    print(students_information)
 #While loop to show list of choices
 Condition = True
 while Condition:
