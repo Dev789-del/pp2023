@@ -31,7 +31,7 @@ def course_info():
         course_ID = str(input("Enter course's id: "))
         course_name = str(input("Enter course's name: "))
         courses_information[course_ID] = {'Course_Name': course_name}
-    course_info_time = datetime.date.now()
+    course_info_time = datetime.datetime.now()
     print(f"You had input information for courses at {course_info_time}")
 
 def mark_subject():
