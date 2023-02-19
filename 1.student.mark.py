@@ -14,7 +14,17 @@ def student_info():
     for i in range(student_number_count):
         student_ID = str(input("Enter student's ID: "))
         student_name = str(input("Enter student's name: "))
-        student_DateOfBirth = str(input("Enter student's date of birth: "))
+        student_DateOfBirth = str(input("Enter student's date of birth(dd/mm/yy): "))
+        day, month, year = student_DateOfBirth.split('/')
+        Check_Valid_Date = True
+        try:
+            datetime.datetime(int(year), int(month), int(day))
+        except ValueError:
+            Check_Valid_Date = False
+        while Check_Valid_Date:
+            continue
+        else:
+            student_DateOfBirth = str(input("Enter student's date of birth with proper format(dd/mm/yy) again: "))
         students_information[student_ID] = {'Student_Name': student_name, 'Student_DateOfBirth': student_DateOfBirth}
     student_info_time = datetime.datetime.now()
     print(f"You had input information for students at {student_info_time}")
