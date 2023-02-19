@@ -9,6 +9,6 @@ Students are expected to:
 Student Info
 =========================
 
-* Student Name: Nguyen Quang Huy
+* Student Name: Nguyễn Quang Huy
 * Student ID: BI11-113
 * Group practical: 5
