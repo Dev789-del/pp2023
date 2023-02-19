@@ -42,9 +42,9 @@ def mark_subject():
     if course_check in courses_information:
         print("You enter the correct course's id.")
     for student_ID in students_information:
-        mark_student = float(input(f"Enter mark for student: {mark_student}"))
+        mark_student = float(input(f"Enter mark for student {students_information[student_ID]['Student_Name']}: {mark_student}"))
         while mark_student < 0 and mark_student > 20:
-            mark_student = float(input(f"You need to enter the mark again: {mark_student}"))
+            mark_student = float(input(f"You need to enter the mark again for student {students_information[student_ID]['Student_Name']}: {mark_student}"))
         else: 
             if student_ID not in mark_subject_list:
                 mark_subject_list[student_ID] = {}
@@ -54,10 +54,12 @@ def mark_subject():
 
 #Define functions to show list of courses and list of students
 def courses_list():
-    print("Here is the list of courses information:")
+    courses_list_time = datetime.datetime.now()
+    print(f"Here is the list of courses information after select option 1 at {courses_list_time}:")
     print(courses_information)
 def students_list():
-    print("Here is the list of students information:")
+    students_list_time = datetime.datetime.now()
+    print(f"Here is the list of students information after select option 2 at {students_list_time}:")
     print(students_information)
 
 #Function below to present mark transcipt for student
@@ -101,4 +103,4 @@ while Condition:
     elif option == 5:
         break
     else:
-        print("Invalid choice.You need to enter the number again.")
+        print("You choose the wrong choice.You need to enter the number again.")
