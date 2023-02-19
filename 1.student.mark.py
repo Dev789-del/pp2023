@@ -12,7 +12,7 @@ def student_info():
     if student_number_count > 0:
         print(f"We have to fill information for {student_number_count} students")
     for i in range(student_number_count):
-        student_ID = str(input("Enter student's id: "))
+        student_ID = str(input("Enter student's ID: "))
         student_name = str(input("Enter student's name: "))
         student_DateOfBirth = str(input("Enter student's date of birth: "))
         students_information[student_ID] = {'Student_Name': student_name, 'Student_DateOfBirth': student_DateOfBirth}
@@ -28,23 +28,23 @@ def course_info():
         print("Congratulations!You enter the correct number!")
         print(f"We need to fill information for {course_number_count} courses")
     for j in range(course_number_count):
-        course_ID = str(input("Enter course's id: "))
+        course_ID = str(input("Enter course's ID: "))
         course_name = str(input("Enter course's name: "))
         courses_information[course_ID] = {'Course_Name': course_name}
     course_info_time = datetime.datetime.now()
     print(f"You had input information for courses at {course_info_time}")
 
 def mark_subject():
-    #Here is the function to input mark for student 
-    course_check = str(input("Please enter course's id/course's name to fill mark: "))
+    #Here is the function to input mark for students
+    course_check = str(input("Please enter course's ID to fill mark: "))
     while course_check not in courses_information:
-        course_check = str(input("Please reenter the valid course's id/course's name in course list info: "))
+        course_check = str(input("Please reenter the correct course's ID in course list information: "))
     if course_check in courses_information:
-        print("You enter the correct course's id.")
+        print("You enter the correct course's ID.")
     for student_ID in students_information:
-        mark_student = float(input(f"Enter mark for student {students_information[student_ID]['Student_Name']}: {mark_student}"))
+        mark_student = float(input(f"Enter mark for student {students_information[student_ID]['Student_Name']}: "))
         while mark_student < 0 and mark_student > 20:
-            mark_student = float(input(f"You need to enter the mark again for student {students_information[student_ID]['Student_Name']}: {mark_student}"))
+            mark_student = float(input(f"You need to enter the mark again for student {students_information[student_ID]['Student_Name']}: "))
         else: 
             if student_ID not in mark_subject_list:
                 mark_subject_list[student_ID] = {}
