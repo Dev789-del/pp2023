@@ -14,11 +14,11 @@ def student_info():
     for i in range(student_number_count):
         student_ID = str(input("Enter student's ID: "))
         student_name = str(input("Enter student's name: "))
-        student_DateOfBirth = str(input("Enter student's date of birth(dd/mm/yy): "))
+        student_DateOfBirth = str(input("Enter student's date of birth(e.g dd/mm/yy): "))
         day, month, year = student_DateOfBirth.split('/')
         Check_Valid_Date = True
         try:
-            datetime.datetime(int(year), int(month), int(day))
+            datetime.datetime(int(day), int(month), int(year))
         except ValueError:
             Check_Valid_Date = False
         while Check_Valid_Date:
