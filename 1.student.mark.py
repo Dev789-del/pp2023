@@ -30,7 +30,7 @@ def student_info():
     print(f"You had input information for students at {student_info_time}")
 
 def course_info():
-    #This function ask user to input information for course list
+    #This function ask user to input information for list of courses
     course_number_count = int(input("Enter a number of courses which are positive: "))
     while course_number_count < 0: 
         course_number_count = int(input("Please reenter the valid POSITIVE number!: "))
@@ -72,7 +72,7 @@ def students_list():
     print(f"Here is the list of students information after selecting option 2 at {students_list_time}:")
     print(students_information)
 
-#Function below to present mark transcipt for student
+#Function below to display mark transcipt for students
 def mark_receive():
     course_identify = input("Enter course's ID to check: ")
     while course_identify not in courses_information:
@@ -88,7 +88,7 @@ def mark_receive():
         else:
             print(f"{students_information[student_ID]['Student_Name']}: N/A")
   
-#Executing student_info and course_info function
+#Executing student_info and course_info functions
 student_info()
 course_info()
 
