@@ -1,24 +1,17 @@
 #define three empty database and import datetime package to show log after input information
-courses_information = []
+courses_information = {}
 mark_subject_list = {}
-students_information = []
 import datetime
-class Student_Parameter:
-    def __init__(self, student_ID, student_name, student_DateOfBirth):
-        #This function describe the inheritance from class Student_Parameter to reference in line 31
-        self.student_ID = student_ID
-        self.student_name = student_name
-        self.student_DateOfBirth = student_DateOfBirth 
 class StudentINFO:
     def __init__(self):
         #This function set student number to 0 and initialize an empty list of students_information
         self.__student_number = 0
-        self.students_information = []
-    def _get_number_of_students(self):
+        self.student_information = {}
+    def get_number_of_students(self):
         return self.__student_number
-    def _set_number_of_students(self, student_number_count):
+    def set_number_of_students(self, student_number_count):
         self.__student_number = student_number_count
-    def request_student_number(self):
+    def input_number_students(self):
         #This function ask user for input a number
         self.student_number_count = int(input("Enter a number that represent the amount of students(must be POSITIVE!): "))
         while self.student_number_count < 0:
@@ -28,25 +21,27 @@ class StudentINFO:
         return self.student_number_count
     def student_info(self):
         #This function ask user to input information for a specific number of students
-        for i in range(self.request_student_number()):
+        for i in range(self.input_number_students()):
             student_ID = str(input("Enter student's ID: "))
             student_name = str(input("Enter student's name: "))
             student_DateOfBirth = str(input("Enter student's date of birth(dd/mm/yy): "))
-            student_information = Student_Parameter(student_ID, student_name, student_DateOfBirth)
-            self.students_information.append(student_information)
-            return self.students_information
+            self.student_information[student_ID] = {'Student_Name': student_name, 'Student_DateOfBirth': student_DateOfBirth}
         student_info_time = datetime.datetime.now()
         print(f"You had input information for students at {student_info_time}")
     def students_list(self):
         #This function show the list of students
-        if len(self.students_information) == 0:
+        if len(self.student_information) == 0:
             print("Empty students list!")
         else:
             students_list_time = datetime.datetime.now()
             print(f"Here is the list of students information after selecting option 2 at {students_list_time}:")
-            print("{:5} | {:12} | {:24} | {:24}".format("Number", "Student_ID", "Student_Name", "Student_DoB"))
-            for i in range(len(self.students_information)):
-                print("{:5} | {:12} | {:24} | {:24}".format(str(i + 1), self.students_information[i].student_ID, self.students_information[i].student_name, self.students_information[i].student_DateOfBirth))
+            print("{:24} | {:24}".format("Student_Name", "Student_DoB"))
+            spacebard = 0
+            for v in self.student_information:
+                print(f"{self.student_information[v]}")
+                spacebard += 1
+                if spacebard % 3 == 0:
+                    print(f"\n{self.student_information[v]}")
 class Course_Parameter:
     #This class make reference to specify courses_information list dictionary line 68
     def __init__(self, course_ID, course_name):
