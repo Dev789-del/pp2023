@@ -85,11 +85,9 @@ def students_list():
     students_list_time = datetime.datetime.now()
     print(f"Here is the list of students information after selecting option 2 at {students_list_time}:")
     print(students_information)
-  
 #Executing student_info and course_info functions
 Student_Info.student_info()
 Course_Info.course_info()
-
 #While loop to show list of choices
 Condition = True
 while Condition:
