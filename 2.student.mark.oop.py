@@ -88,6 +88,7 @@ def students_list():
 #Executing student_info and course_info functions
 Student_Info.student_info()
 Course_Info.course_info()
+
 #While loop to show list of choices
 Condition = True
 while Condition:
