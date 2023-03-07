@@ -1,84 +1,49 @@
-#import datetime package to show log after input information
+#define three empty database and import datetime package to show log after input information
 courses_information = {}
 students_information = {}
 mark_subject_list = {}
 import datetime
-class StudentINFO:
-    def __init__(self):
-        #This function set student number to 0 and initialize an empty list of students_information
-        self.__student_number = 0
-    def get_number_of_students(self):
-        return self.__student_number
-    def set_number_of_students(self, student_number_count):
-        self.__student_number = student_number_count
-    def input_number_students(self):
-        #This function ask user for input a number
-        self.student_number_count = int(input("Enter a number that represent the amount of students(must be POSITIVE!): "))
-        while self.student_number_count < 0:
-            self.student_number_count = int(input("Please reenter the right positive number of students: "))
-        if self.student_number_count > 0:
-            print(f"We have to fill information for {self.student_number_count} students")
-        return self.student_number_count
-    def student_info(self):
+class Student_Info:
+    def student_info():
         #This function ask user to input information for a specific number of students
-        for i in range(self.input_number_students()):
+        student_number_count = int(input("Enter a number that represent the amount of students(must be POSITIVE): "))
+        while student_number_count < 0:
+            student_number_count = int(input("Please reenter the right positive number of students: "))
+        if student_number_count > 0:
+            print(f"We have to fill information for {student_number_count} students")
+        for i in range(student_number_count):
             student_ID = str(input("Enter student's ID: "))
             student_name = str(input("Enter student's name: "))
-            student_DateOfBirth = str(input("Enter student's date of birth(dd/mm/yy): "))
+            student_DateOfBirth = str(input("Enter student's date of birth(e.g dd/mm/yy): "))
+            day, month, year = student_DateOfBirth.split('/')
+            Check_Valid_Date = True
+            try:
+                datetime.datetime(int(day), int(month), int(year))
+            except ValueError:
+                Check_Valid_Date = False
+            while Check_Valid_Date:
+                continue
+            else:
+                student_DateOfBirth = str(input("Enter student's date of birth with proper format(dd/mm/yy) again: "))
             students_information[student_ID] = {'Student_Name': student_name, 'Student_DateOfBirth': student_DateOfBirth}
         student_info_time = datetime.datetime.now()
         print(f"You had input information for students at {student_info_time}")
-    def students_list():
-        #This function show the list of students
-        if len(students_information) == 0:
-            print("Empty students list!")
-        else:
-            students_list_time = datetime.datetime.now()
-            print(f"Here is the list of students information after selecting option 2 at {students_list_time}:")
-            print("{:24} | {:24}".format("Student_Name", "Student_DoB"))
-            spacebard = 0
-            for v in students_information:
-                print(f"{students_information[v]}")
-                spacebard += 1
-                if spacebard % 3 == 0:
-                    print(f"\n{students_information[v]}")
-    def get_student_list():
-        return students_information
-class CourseINFO:
-    def __init__(self):
-        self.__courses_number = 0
-        self.courses_information = {}
-    def get_courses_count(self):
-        return self.__courses_number
-    def set_courses_quantity(self, course_number_count):
-        self.__courses_number = course_number_count
-    def input_num_courses(self):
-        self.course_number_count = int(input("Enter a number of courses which are positive: "))
-        while self.course_number_count < 0: 
-            self.course_number_count = int(input("Please reenter the valid POSITIVE number: "))
-        if self.course_number_count > 0:
+class Course_Info:
+    def course_info():
+        #This function ask user to input information for list of courses
+        course_number_count = int(input("Enter a number of courses which are positive: "))
+        while course_number_count < 0: 
+            course_number_count = int(input("Please reenter the valid POSITIVE number!: "))
+        if course_number_count > 0:
             print("Congratulations!You enter the correct number!")
-            print(f"We need to fill information for {self.course_number_count} courses")
-        return self.course_number_count
-    def course_info(self):
-        #This function ask user to input information for course list
-        for j in range(self.input_num_courses()):
+            print(f"We need to fill information for {course_number_count} courses")
+        for j in range(course_number_count):
             course_ID = str(input("Enter course's ID: "))
             course_name = str(input("Enter course's name: "))
             courses_information[course_ID] = {'Course_Name': course_name}
         course_info_time = datetime.datetime.now()
         print(f"You had input information for courses at {course_info_time}")
-    def courses_list():
-        #This function show the list of courses
-        courses_list_time = datetime.datetime.now()
-        if len(courses_information) == 0:
-            print("Empty courses list!")
-        else:
-            print(f"Here is the list of courses information after selecting option 1 at {courses_list_time}:")
-            print(courses_information)
-    def get_course_list(self):
-        return self.courses_information
-class Result_INFO:
+class Mark_Info:
     def mark_subject():
         #Here is the function to input mark for students
         course_check = str(input("Please enter course's ID to fill mark: "))
@@ -111,39 +76,40 @@ class Result_INFO:
                 print(f"{students_information[student_ID]['Student_Name']}: {mark_subject_list[student_ID][course_identify]}")
             else:
                 print(f"{students_information[student_ID]['Student_Name']}: N/A")
+#Define functions to show list of courses and list of students
+def courses_list():
+    courses_list_time = datetime.datetime.now()
+    print(f"Here is the list of courses information after selecting option 1 at {courses_list_time}:")
+    print(courses_information)
+def students_list():
+    students_list_time = datetime.datetime.now()
+    print(f"Here is the list of students information after selecting option 2 at {students_list_time}:")
+    print(students_information)
   
-#Define three custom function operator
-student_info_function = StudentINFO()
-course_info_function = CourseINFO()
-mark_info_function = Result_INFO()
-courses_information = course_info_function.get_course_list
-students_information = student_info_function.get_student_list
+#Executing student_info and course_info functions
+Student_Info.student_info()
+Course_Info.course_info()
+
 #While loop to show list of choices
 Condition = True
 while Condition:
     print("----------Welcome to Student Management System----------")
     print("Here is your list of choices:")
-    print("1.Add information for list of students")
-    print("2.Add information for list of courses")
-    print("3.Show courses information")
-    print("4.Show students information")
-    print("5.Add mark information")
-    print("6.Show mark information")
-    print("7.Exit system")
+    print("1.Show list of courses")
+    print("2.Show list of students")
+    print("3.Input student's result of courses")
+    print("4.Show final mark of all students")
+    print("5.Exit system")
     option = int(input("Choose your option number: "))
     if option == 1:
-        student_info_function.student_info()
+        courses_list()
     elif option == 2:
-        course_info_function.course_info()
+        students_list()
     elif option == 3:
-        course_info_function.courses_list()
+        Mark_Info.mark_subject()
     elif option == 4:
-        student_info_function.students_list()
+        Mark_Info.mark_receive()
     elif option == 5:
-        mark_info_function.mark_subject()
-    elif option == 6:
-        mark_info_function.mark_receive()
-    elif option == 7:
         break
     else:
-        print("!!!You choose the wrong choice.You need to enter the number again!!!")
+        print("You choose the wrong choice.You need to enter the number again.")
