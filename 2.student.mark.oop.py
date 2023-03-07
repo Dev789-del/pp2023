@@ -27,7 +27,12 @@ class Student_Info:
                 student_DateOfBirth = str(input("Enter student's date of birth with proper format(dd/mm/yy) again: "))
             students_information[student_ID] = {'Student_Name': student_name, 'Student_DateOfBirth': student_DateOfBirth}
         student_info_time = datetime.datetime.now()
-        print(f"You had input information for students at {student_info_time}")
+        print(f"You had input information for students at {student_info_time}")  
+    #Function to send back student information
+    def students_list():
+        students_list_time = datetime.datetime.now()
+        print(f"Here is the list of students information after selecting option 2 at {students_list_time}:")
+        print(students_information)
 class Course_Info:
     def course_info():
         #This function ask user to input information for list of courses
@@ -43,6 +48,11 @@ class Course_Info:
             courses_information[course_ID] = {'Course_Name': course_name}
         course_info_time = datetime.datetime.now()
         print(f"You had input information for courses at {course_info_time}")
+    #Function to send back courses list information
+    def courses_list():
+        courses_list_time = datetime.datetime.now()
+        print(f"Here is the list of courses information after selecting option 1 at {courses_list_time}:")
+        print(courses_information)
 class Mark_Info:
     def mark_subject():
         #Here is the function to input mark for students
@@ -76,15 +86,7 @@ class Mark_Info:
                 print(f"{students_information[student_ID]['Student_Name']}: {mark_subject_list[student_ID][course_identify]}")
             else:
                 print(f"{students_information[student_ID]['Student_Name']}: N/A")
-#Define functions to show list of courses and list of students
-def courses_list():
-    courses_list_time = datetime.datetime.now()
-    print(f"Here is the list of courses information after selecting option 1 at {courses_list_time}:")
-    print(courses_information)
-def students_list():
-    students_list_time = datetime.datetime.now()
-    print(f"Here is the list of students information after selecting option 2 at {students_list_time}:")
-    print(students_information)
+
 #Executing student_info and course_info functions
 Student_Info.student_info()
 Course_Info.course_info()
@@ -101,9 +103,9 @@ while Condition:
     print("5.Exit system")
     option = int(input("Choose your option number: "))
     if option == 1:
-        courses_list()
+        Course_Info.courses_list()
     elif option == 2:
-        students_list()
+        Student_Info.students_list()
     elif option == 3:
         Mark_Info.mark_subject()
     elif option == 4:
