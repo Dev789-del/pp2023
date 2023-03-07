@@ -4,6 +4,13 @@ students_information = {}
 mark_subject_list = {}
 import datetime
 class Student_Info:
+    #Function to clarify encapsulation for students number
+    def __init__(self):
+        self.__students_number = 0
+    def get_students_number(self):
+        return self.__students_number
+    def set_students_number(self, student_number_count):
+        self.__students_number = student_number_count
     def student_info():
         #This function ask user to input information for a specific number of students
         student_number_count = int(input("Enter a number that represent the amount of students(must be POSITIVE): "))
@@ -34,6 +41,13 @@ class Student_Info:
         print(f"Here is the list of students information after selecting option 2 at {students_list_time}:")
         print(students_information)
 class Course_Info:
+    #Function to clarify encapsulation for courses number
+    def __init__(self):
+        self.__courses_number = 0
+    def get_courses_number(self):
+        return self.__courses_number
+    def set_courses_number(self, course_number_count):
+        self.__courses_number = course_number_count
     def course_info():
         #This function ask user to input information for list of courses
         course_number_count = int(input("Enter a number of courses which are positive: "))
