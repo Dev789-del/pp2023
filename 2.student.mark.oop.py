@@ -153,14 +153,23 @@ while Condition:
         else:
             student_info_function.students_list_display()
     elif option == 4:
-        while len(students_information) == 0:
+        while len(courses_information) == 0:
             print("!!!Empty information in courses data!!!")
+            break
         else: 
             course_info_function.courses_list_display()
     elif option == 5:
-        mark_info_function.mark_subject()
+        while len(courses_information) == 0 and len(students_information) == 0:
+            print("!!!Empty information!!!")
+            break
+        else: 
+            mark_info_function.mark_subject()
     elif option == 6:
-        mark_info_function.mark_receive_display()
+        while len(courses_information) == 0 and len(students_information) == 0:
+            print("!!!Empty information!!!")
+            break
+        else: 
+            mark_info_function.mark_receive_display()
     elif option == 7:
         break
     else:
