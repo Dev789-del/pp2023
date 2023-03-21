@@ -10,7 +10,7 @@ from math import floor
 import datetime
 #define class Student_Info
 class Student_Info:
-    def student_info():
+    def input_student_info():
         #This function ask user to input information for a specific number of students
         student_number_count = int(input("Enter a number that represent the amount of students(must be POSITIVE): "))
         while student_number_count < 0:
@@ -22,18 +22,18 @@ class Student_Info:
             student_name = str(input("Enter student's name: "))
             student_DateOfBirth = str(input("Enter student's date of birth(e.g dd/mm/yy): "))
             Student_Content = Student_Inheritance(student_ID, student_name, student_DateOfBirth)
-            Student_Content.get_Student_List()
+            Student_Content.set_Student_List()
         student_info_time = datetime.datetime.now()
         print(f"You had input information for students at {student_info_time}")  
     #Function to send back student information
-    def students_list_display():
+    def display_student_info():
         students_list_time = datetime.datetime.now()
         print(f"Here is the list of students information after selecting option 3 at {students_list_time}:")
         for student_ID in students_information:
             print(f"{student_ID}: {students_information[student_ID]['Student_Name'], students_information[student_ID]['Student_DateOfBirth']}")
 #define class Course_Info
 class Course_Info:
-    def course_info():
+    def input_course_info():
         #This function ask user to input information for list of courses
         course_number_count = int(input("Enter a number of courses which are positive: "))
         while course_number_count < 0: 
@@ -46,18 +46,18 @@ class Course_Info:
             course_name = str(input("Enter course's name: "))
             course_ECTS = int(input("Enter course credits count: "))
             course_content = Course_Main_Class(course_ID, course_name, course_ECTS)
-            course_content.get_CourseList()
+            course_content.set_CourseList()
         course_info_time = datetime.datetime.now()
         print(f"You had input information for courses at {course_info_time}")
     #Function to send back courses list information
-    def courses_list_display():
+    def display_course_info():
         courses_list_time = datetime.datetime.now()
         print(f"Here is the list of courses information after selecting option 4 at {courses_list_time}:")
         for course_ID in courses_information:
             print(f"{course_ID}: {courses_information[course_ID]['Course_Name'], courses_information[course_ID]['Course_ECTS']}")
 #Define mark_info class
 class Mark_Info:
-    def mark_subject():
+    def input_course_mark():
         #Here is the function to input mark for students
         course_check = str(input("Please enter course's ID to fill mark: "))
         while course_check not in courses_information:
@@ -71,11 +71,11 @@ class Mark_Info:
             else: 
                 mark_student = floor(mark_student * 10 / 10.0)
                 mark_content = Mark_Factor(mark_student)
-                mark_content.get_Mark_Subject(student_ID, course_check)
+                mark_content.set_Mark_Subject(student_ID, course_check)
         mark_subject_time = datetime.datetime.now()
         print(f"You had input information for subject mark at {mark_subject_time}")
     #Function below to display mark transcipt for students
-    def mark_receive_display():
+    def display_mark_student():
         course_identify = input("Enter course's ID to check: ")
         while course_identify not in courses_information:
             print("Course's ID not exist.Please enter again")
@@ -90,7 +90,7 @@ class Mark_Info:
             else:
                 print(f"{students_information[student_ID]['Student_Name']}: N/A")
     #Define function to calculate GPA
-    def GPA_calculator():
+    def calculate_GPA():
         ECTS_SUM = 0
         MARK_SUM = 0
         for student_ID in students_information:
