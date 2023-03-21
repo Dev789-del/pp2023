@@ -6,8 +6,8 @@ from input import mark_info_function
 from input import student_info_function
 from input import course_info_function
 #Executing functions for inputing information to courses and students
-student_info_function.student_info()
-course_info_function.course_info()
+student_info_function.input_student_info()
+course_info_function.input_course_info()
 #While loop to show list of choices
 Condition = True
 while Condition:
@@ -24,10 +24,10 @@ while Condition:
             print("!!!Empty information!!!")
             break
         else: 
-            mark_info_function.mark_subject()
+            mark_info_function.input_course_mark()
     elif option == 2:
         
-        mark_info_function.GPA_calculator()
+        mark_info_function.calculate_GPA()
     elif option == 3:
          mark_info_function.show_info_gpa_sorted_list()
         
