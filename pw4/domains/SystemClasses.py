@@ -32,7 +32,7 @@ class Student_Inheritance(Student):
         self.__Student_ID = student_ID
     def get_StudentID(self):
         return self.__Student_ID
-    def get_Student_List(self):
+    def set_Student_List(self):
         students_information[self.get_StudentID()] = {'Student_Name': self.get_studentName(), 'Student_DateOfBirth': self.get_studentDOB()}
     
 #Define Course_Info class
@@ -47,14 +47,14 @@ class Course_Main_Class:
         return self.__course_ID
     def get_CourseCredits(self):
         return self.__course_ECTs
-    def get_CourseList(self):
+    def set_CourseList(self):
         courses_information[self.get_CourseID()] = {"Course_Name": self.get_CourseName(), "Course_ECTS": self.get_CourseCredits()}
 class Mark_Factor:
     def __init__(self, mark_student):
         self.__mark_student = mark_student
     def get_mark_student(self):
         return self.__mark_student
-    def get_Mark_Subject(self, student_ID, course_ID):
+    def set_Mark_Subject(self, student_ID, course_ID):
         if student_ID not in mark_subject_list:
             mark_subject_list[student_ID] = {}
         mark_subject_list[student_ID][course_ID] = {'final_mark': [self.get_mark_student()]}
