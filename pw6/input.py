@@ -8,6 +8,7 @@ from domains.SystemClasses import mark_gpa_list
 import numpy as numberpython
 from math import floor
 import datetime
+import pickle
 #define class Student_Info
 class Student_Info:
     def input_student_info():
@@ -36,6 +37,9 @@ class Student_Info:
         for x in range(len(students_information)):
             student_out_file = open('students.txt', 'w')
             print(students_information, file = student_out_file)
+            with open('students.txt', 'rb'):
+                students = pickle.load()
+                pickle.dump(students)
             student_out_file.close()
 
 #define class Course_Info
@@ -65,8 +69,11 @@ class Course_Info:
     def save_course_list():
         #Function to save course list to a text file created
         for x in range(len(courses_information)):
-            course_out_file = open('students.txt', 'w')
+            course_out_file = open('courses.txt', 'w')
             print(courses_information, file = course_out_file)
+            with open('courses.txt', 'rb'):
+                courses = pickle.load()
+                pickle.dump(courses)
             course_out_file.close()
 #Define mark_info class
 class Mark_Info:
@@ -107,6 +114,9 @@ class Mark_Info:
         for x in range(len(mark_subject_list)):
             mark_out_file = open('students.txt', 'w')
             print(mark_subject_list, file = mark_out_file)
+            with open('marks.txt', 'rb'):
+                marks = pickle.load()
+                pickle.dump(marks)
             mark_out_file.close()
     #Define function to calculate GPA
     def calculate_GPA():
