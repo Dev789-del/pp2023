@@ -33,8 +33,10 @@ class Student_Info:
             print(f"{student_ID}: {students_information[student_ID]['Student_Name'], students_information[student_ID]['Student_DateOfBirth']}")
     def save_student_list():
         #Function to save student list to a text file created
-        with open('student.txt', 'w') as f:
-            f.write(students_information)
+        for x in range(len(students_information)):
+            student_out_file = open('students.txt', 'w')
+            print(students_information, file = student_out_file)
+            student_out_file.close()
 
 #define class Course_Info
 class Course_Info:
@@ -62,8 +64,10 @@ class Course_Info:
             print(f"{course_ID}: {courses_information[course_ID]['Course_Name'], courses_information[course_ID]['Course_ECTS']}")
     def save_course_list():
         #Function to save course list to a text file created
-        with open('course.txt', 'w') as f:
-            f.write(courses_information)
+        for x in range(len(courses_information)):
+            course_out_file = open('students.txt', 'w')
+            print(courses_information, file = course_out_file)
+            course_out_file.close()
 #Define mark_info class
 class Mark_Info:
     def input_course_mark():
@@ -98,10 +102,12 @@ class Mark_Info:
                 print(f"{students_information[student_ID]['Student_Name']}: {mark_subject_list[student_ID][course_identify]}")
             else:
                 print(f"{students_information[student_ID]['Student_Name']}: N/A")
-    def save_student_list():
+    def save_marks_list():
         #Function to save mark list to a text file created
-        with open('marks.txt', 'w') as f:
-            f.write(mark_subject_list)
+        for x in range(len(mark_subject_list)):
+            mark_out_file = open('students.txt', 'w')
+            print(mark_subject_list, file = mark_out_file)
+            mark_out_file.close()
     #Define function to calculate GPA
     def calculate_GPA():
         ECTS_SUM = 0
